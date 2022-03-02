@@ -21,8 +21,20 @@ CHANNEL_COUNT = {
 }
 
 parser = ArgumentParser(description="Remove the palette from an imretro file.")
-parser.add_argument("infile", metavar="FILE", type=FileType("rb"), default=sys.stdin)
-parser.add_argument("outfile", metavar="FILE", type=FileType("wb"), default=sys.stdout)
+parser.add_argument(
+    "infile",
+    metavar="IN",
+    type=FileType("rb"),
+    default=sys.stdin,
+    help="The source file that contains a palette",
+)
+parser.add_argument(
+    "outfile",
+    metavar="OUT",
+    type=FileType("wb"),
+    default=sys.stdout,
+    help="Where the file without a palette should be written",
+)
 args = parser.parse_args()
 
 with args.infile as source:
